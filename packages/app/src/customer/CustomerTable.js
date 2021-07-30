@@ -16,23 +16,11 @@ import {
 import { DEFAULT_STYLES, useDefaultStyles } from "../shared/styles/rootStyles";
 import MainLayout from "../layouts/MainLayout";
 
-const customers = [{
-    id: 1,
-    name: 'Nadia',
-    age: 35,
-},
-{
-    id: 2,
-    name: 'Olia',
-    age: 36,
-},
-{
-    id: 3,
-    name: 'Misha',
-    age: 2,
-}]
+const CustomerTable = (props) => {
+    const {
+        customerList
+    } = props;
 
-const CustomerTable = () => {
     const classes = useDefaultStyles(DEFAULT_STYLES);
 
     return (
@@ -61,7 +49,7 @@ const CustomerTable = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {customers.map((customer) => (
+                        {customerList.map((customer) => (
                             <TableRow key={`customer_${customer.id}`}>
                                 <TableCell component="th" scope="row">{customer.id}</TableCell>
                                 <TableCell component="th" scope="row">{customer.name}</TableCell>

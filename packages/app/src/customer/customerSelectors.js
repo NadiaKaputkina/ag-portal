@@ -1,0 +1,1 @@
+export const customerListSelector = (state) => state.customer.items;
