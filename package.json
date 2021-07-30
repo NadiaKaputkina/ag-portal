@@ -9,7 +9,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "lerna run start",
+    "start": "npx lerna run start",
     "stop": "taskkill /f /im node.exe",
     "hoist": "npx lerna bootstrap --hoist"
   }
