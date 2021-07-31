@@ -11,6 +11,9 @@ export const DEFAULT_STYLES = {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+    },
+    table: {
+        marginTop: '100px',
     }
 }
 

@@ -12,8 +12,8 @@ const MainLayout = ({children}) => {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <ApplicationBar
-                />
+                {/* <ApplicationBar /> */}
+                
                 <div className={classes.layout}>
                     {children}
                 </div>

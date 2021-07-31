@@ -1,0 +1,1 @@
+export const operationListSelector = (state) => state.operation.items;

@@ -6,6 +6,8 @@ const db = require('./db');
 
 app.use(cors())
 
+app.use('/operation', operationRoute)
+
 app.get('/', (req, res) => {
     res.send('I am a backend server');
 });
@@ -16,6 +18,15 @@ app.get('/customer/list', async (req, res) => {
     
     res.send(customerList);
 });
+
+app.get('/bankAccount/list', async (req, res) => {
+    const bankAccountList = await db.select().table('bankAccount')
+
+    // console.log('------------------->', customerList);
+    
+    res.send(bankAccountList);
+});
+
 
 app.listen(port, (err) => {
     if (err) {
