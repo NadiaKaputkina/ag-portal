@@ -1,11 +1,11 @@
 import React from 'react'
 import MainLayout from "../layouts/MainLayout";
-import CustomerContainer from './CustomerContainer';
+import CustomerListContainer from './CustomerListContainer';
 
 const CustomerListPage = () => {
     return (
         <MainLayout>
-            <CustomerContainer />
+            <CustomerListContainer />
         </MainLayout>
     )
 }

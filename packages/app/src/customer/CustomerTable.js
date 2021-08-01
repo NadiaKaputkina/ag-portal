@@ -1,20 +1,14 @@
 import React from 'react'
 import {
     TableCell,
-    withStyles,
-    makeStyles,
     Paper,
     TableRow,
     TableContainer,
     Table,
     TableBody,
     TableHead,
-    IconButton,
-    TablePagination,
-    TableFooter,
 } from "@material-ui/core";
 import { DEFAULT_STYLES, useDefaultStyles } from "../shared/styles/rootStyles";
-import MainLayout from "../layouts/MainLayout";
 
 const CustomerTable = (props) => {
     const {

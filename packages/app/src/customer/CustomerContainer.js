@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { loadCustomerAction } from './customerAction';
-import { customerListSelector } from './customerSelectors';
-import CustomerTable from './CustomerTable';
+import CustomerForm from './CustomerForm';
+import { customerSelector } from './customerSelectors';
 
 const CustomerContainer = () => {
     const dispatch = useDispatch()
-    const customerList = useSelector(customerListSelector)
+    const customer = useSelector(customerSelector)
 
     useEffect(() => {
         dispatch(loadCustomerAction())
     }, []);
 
     return (
-        <CustomerTable customerList={customerList} />
+        <CustomerForm customer={customer} />
     )
 }
 
