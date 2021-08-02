@@ -4,11 +4,9 @@ import { BANK_ACCOUNT_LIST_LOAD_SUCCESS } from "./bankAccountReducer"
 
 export const loadBankAccountnAction = (payload) => {
     return async (dispatch) => {
-        console.log('1')
         try {
             const response = await loadBankAccountList()
             const res = await response.json()
-            console.log('2', res)
 
             if (res.length) {
 

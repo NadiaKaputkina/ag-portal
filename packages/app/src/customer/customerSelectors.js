@@ -1,3 +1,10 @@
+import { createSelector } from 'reselect'
+
 export const customerListSelector = (state) => state.customer.items;
 
-export const customerSelector = (state) => state.customer.item;
+export const customerSelector = (id) => createSelector(
+    customerListSelector,
+    (items) => items.find(item => {
+        return item.id === +id
+    })
+)

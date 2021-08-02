@@ -1,11 +1,14 @@
 import React from 'react'
-import MainLayout from "../layouts/MainLayout";
+import { useParams } from 'react-router';
+import MainLayout from "../../layouts/MainLayout";
 import CustomerContainer from './CustomerContainer';
 
 const CustomerPage = () => {
+    let { id } = useParams();
+   
     return (
         <MainLayout>
-            <CustomerContainer />
+            <CustomerContainer id={id}/>
         </MainLayout>
     )
 }

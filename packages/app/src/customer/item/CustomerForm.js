@@ -4,7 +4,7 @@ const CustomerForm = (props) => {
     const {
         customer
     } = props;
-
+    
     return (
         <div>{ JSON.stringify(customer) }</div>
     )

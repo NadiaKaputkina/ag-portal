@@ -23,7 +23,7 @@ export const loadCustomerListAction = () => {
 export const loadCustomerAction = () => {
     return async (dispatch) => {
         try {
-            const response = await loadCustomer(1)
+            const response = await loadCustomer()
             const res = await response.json()
 
             if (res.length) {

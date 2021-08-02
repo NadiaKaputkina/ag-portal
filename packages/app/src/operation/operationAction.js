@@ -6,7 +6,6 @@ import { OPERATION_LIST_LOAD_SUCCESS } from "./operationReducer"
 
 export const loadOperationAction = (payload) => {
     return async (dispatch) => {
-        console.log('1')
         try {
             const response1 = await loadBankAccountList()
             const res1 = await response1.json()
