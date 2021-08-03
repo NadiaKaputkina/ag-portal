@@ -3,18 +3,22 @@ import Grid from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
 import { useFormik } from 'formik';
 import EditableTextInput from "./EditableTextInput";
+import { useDispatch } from "react-redux";
+import { updateCustomerAction } from "../customerAction";
 
 const CustomerForm = (props) => {
     const { customer } = props;
+    const dispatch = useDispatch()
 
     const formik = useFormik({
         initialValues: {
+            id: customer ? customer.id : '',
             name: customer ? customer.name : '',
             age: customer ? customer.age : '',
         },
         enableReinitialize: true,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            dispatch(updateCustomerAction(values))
         },
     });
 

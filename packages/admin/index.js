@@ -3,6 +3,8 @@ const port = process.env.PORT || 5000;
 const cors = require('cors')
 const app = express();
 
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(cors());
 
 const operationRouter = require('./model/operation/operationRoute');
