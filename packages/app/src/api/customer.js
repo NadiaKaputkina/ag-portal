@@ -15,3 +15,12 @@ export const updateCustomerApi = (formData) => {
         },
     })
 }
+
+export const deleteCustomerApi = (id) => {
+    return fetch(`http://localhost:5000/customer/${id}/delete`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+}

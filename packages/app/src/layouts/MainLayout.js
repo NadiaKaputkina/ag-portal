@@ -5,7 +5,7 @@ import {
 import { useAppBarStyles } from "../shared/styles/rootStyles";
 import ApplicationBar from '../shared/components/applicationBar/applicationBar';
 import { theme } from '../shared/styles/theme';
-import SnackbarContainer from './snackBar/SnackBarContainer';
+import SnackBarContainer from './snackBar/SnackBarContainer';
 
 const MainLayout = ({children}) => {
     const classes = useAppBarStyles();
@@ -19,7 +19,7 @@ const MainLayout = ({children}) => {
                     {children}
                 </div>
             </div>
-            <SnackbarContainer />
+            {/* <SnackBarContainer /> */}
         </ThemeProvider>
     )
 }

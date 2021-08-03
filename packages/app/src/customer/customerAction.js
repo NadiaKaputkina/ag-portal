@@ -1,4 +1,4 @@
-import { loadCustomerList, loadCustomer, updateCustomerApi } from "../api/customer"
+import { loadCustomerList, loadCustomer, updateCustomerApi, deleteCustomerApi } from "../api/customer"
 import { snackShowAction } from "../layouts/snackBar/snackAction"
 import {
     CUSTOMER_LIST_LOAD_SUCCESS,
@@ -49,6 +49,22 @@ export const updateCustomerAction = (formData) => {
 
             if (response.status === 200) {
                 dispatch(snackShowAction('Успешно', 'success', true))
+            }
+        } catch (e) {
+            console.log('e', e)
+            dispatch(snackShowAction(e, 'error', true))
+        }
+    }
+}
+
+export const deleteCustomerAction = (id) => {
+    return async (dispatch) => {
+        try {
+            const response = await deleteCustomerApi(id)
+
+            if (response.status === 200) {
+                dispatch(snackShowAction('Успешно', 'success', true))
+                dispatch(loadCustomerListAction())
             }
         } catch (e) {
             console.log('e', e)

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectSnack } from "./snackSelector";
 import { snackCloseAction } from "./snackAction";
 
-const SnackbarContainer = () => {
+const SnackBarContainer = () => {
 
     let snack = useSelector(selectSnack)
     const dispatch = useDispatch();
@@ -20,4 +20,4 @@ const SnackbarContainer = () => {
     )
 }
 
-export default SnackbarContainer
+export default SnackBarContainer

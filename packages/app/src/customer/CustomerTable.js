@@ -7,13 +7,17 @@ import {
     Table,
     TableBody,
     TableHead,
+    IconButton,
 } from "@material-ui/core";
+import DeleteIcon from '@material-ui/icons/Delete';
 import { DEFAULT_STYLES, useDefaultStyles } from "../shared/styles/rootStyles";
+import TableCellStatus from './list/TableCellStatus';
 
 const CustomerTable = (props) => {
     const {
         customerList,
-        handleRowClick
+        handleRowClick,
+        handleDeleteButton
     } = props;
 
     const classes = useDefaultStyles(DEFAULT_STYLES);
@@ -38,19 +42,39 @@ const CustomerTable = (props) => {
                         >
                             <span>{333}</span>
                         </TableCell>
+                        <TableCell
+                            variant="head"
+                        >
+                            <span>Status</span>
+                        </TableCell>
+                        <TableCell
+                            variant="head"
+                            align="right"
+                        >
+                            <span>Actions</span>
+                        </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {customerList.map((customer) => (
-                        <TableRow key={`customer_${customer.id}`} onClick={handleRowClick(customer.id)}>
-                            <TableCell component="th" scope="row">{customer.id}</TableCell>
-                            <TableCell component="th" scope="row">{customer.name}</TableCell>
-                            <TableCell align="right">{customer.age}</TableCell>
+                        <TableRow key={`customer_${customer.id}`}>
+                            <TableCell component="th" scope="row" onClick={handleRowClick(customer.id)}>{customer.id}</TableCell>
+                            <TableCell component="th" scope="row" onClick={handleRowClick(customer.id)}>{customer.name}</TableCell>
+                            <TableCell onClick={handleRowClick(customer.id)}>{customer.age}</TableCell>
+                            <TableCellStatus customer={customer} handleRowClick={handleRowClick} />
+                            <TableCell align="right">
+                                <IconButton
+                                    aria-label="delete"
+                                    onClick={handleDeleteButton(customer.id)}
+                                >
+                                    <DeleteIcon />
+                                </IconButton>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
-            </TableContainer>
+        </TableContainer>
     )
 }
 

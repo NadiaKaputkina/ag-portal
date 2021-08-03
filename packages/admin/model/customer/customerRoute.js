@@ -8,6 +8,6 @@ router.post('/:id/update', updateCustomer);
 
 router.post('/new', addCustomer);
 router.put('/:id', editCustomer);
-router.delete('/:id', deleteCustomer);
+router.post('/:id/delete', deleteCustomer);
 
 module.exports = router;

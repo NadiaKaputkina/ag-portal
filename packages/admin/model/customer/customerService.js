@@ -36,7 +36,13 @@ const addCustomer = async (req, res) => {
 }
 
 const deleteCustomer = async (req, res) => {
-    res.send();
+    const id = req.params.id;
+
+    const customer = await db.table('customer')
+    .where('id', '=', id)
+    .update({isEnable: 0})
+
+    res.send(req.body);
 }
 
 module.exports = {

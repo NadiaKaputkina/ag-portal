@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import { TextField } from "@material-ui/core";
 
@@ -22,13 +22,10 @@ const EditableTextInput = (props) => {
         setCurrentFieldName(null)
     }
 
-    const inputEl = useRef(null);
-
     return (
         <Grid item xs={6} data-for={fieldName} onClick={handleEditClick}>
             { isEdit
                 ? <TextField
-                    ref={inputEl}
                     fullWidth
                     id={fieldName}
                     name={fieldName}
