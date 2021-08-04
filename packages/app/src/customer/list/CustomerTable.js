@@ -10,8 +10,8 @@ import {
     IconButton,
 } from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
-import { DEFAULT_STYLES, useDefaultStyles } from "../shared/styles/rootStyles";
-import TableCellStatus from './list/TableCellStatus';
+import { DEFAULT_STYLES, useDefaultStyles } from "../../shared/styles/rootStyles";
+import TableCellStatus from './TableCellStatus';
 
 const CustomerTable = (props) => {
     const {
