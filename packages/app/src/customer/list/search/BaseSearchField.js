@@ -48,13 +48,14 @@ const BaseSearchField = (props) => {
 
     const {
         queryParams,
-        setQueryParams,
-    } = props
+        qParam,
+        setQParam,
+    } = props;
 
     const classes = useStyles()
     // const dispatch = useDispatch()
 
-    const handleOnBlur = (event) => {      
+    const handleOnBlur = (event) => {
         // setQueryParams({...queryParams, [prop]: event.target.value})
         // setIsSearched(!isSearched)
         // dispatch(search(event.target.value)).then((res) => {
@@ -62,7 +63,7 @@ const BaseSearchField = (props) => {
         // })
     };
     const handleChange = (event) => {
-        queryParams.q = event.target.value
+        setQParam(event.target.value)
 
         // setQueryParams({...queryParams, [prop]: event.target.value})
         // setIsSearched(!isSearched)
@@ -73,7 +74,7 @@ const BaseSearchField = (props) => {
     let history = useHistory()
 
     const replaceUrl = () => {
-        let newUrl = prepareUrl('/customer/list', queryParams)
+        let newUrl = prepareUrl('/customer/list', { ...queryParams, q: qParam })
         history.push(newUrl)
     };
 
@@ -90,7 +91,7 @@ const BaseSearchField = (props) => {
                     root: classes.inputRoot,
                     input: classes.inputInput,
                 }}
-                inputProps={{'aria-label': 'search'}}
+                inputProps={{ 'aria-label': 'search' }}
                 onBlur={handleOnBlur}
                 onChange={handleChange}
             />

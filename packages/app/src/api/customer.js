@@ -1,5 +1,10 @@
-export const loadCustomerList = () => {
-    return fetch('http://localhost:5000/customer/list')
+import { prepareUrl } from "../helpers/queryHelper"
+const baseApiUrl = 'http://localhost:5000'
+
+export const loadCustomerList = (queryParams) => {
+    let url = prepareUrl(`${baseApiUrl}/customer/list`, queryParams)
+
+    return fetch(url)
 }
 
 export const loadCustomer = (id) => {

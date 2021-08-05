@@ -1,7 +1,16 @@
+const { query } = require('express');
 const db = require('../../db');
 
 const loadList = async (req, res) => {
-    const customerList = await db.select().table('customer')
+    const sql = db.select().table('customer')
+
+    console.log('QUERY -> ', req.query);
+
+    if (req.query.q) {
+        sql.where('name', 'like', `%${req.query.q}%`)
+    }
+
+    const customerList = await sql 
     
     res.send(customerList);
 };

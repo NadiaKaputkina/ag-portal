@@ -7,13 +7,15 @@ import BaseTableContainer from './list/BaseTableContainer';
 import BaseSearchContainer from './list/search/BaseSearchContainer';
 
 const CustomerContainer = () => {
+    let queryParams = prepareQueryParams(useLocation().search);
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(loadCustomerListAction())
-    }, []);
+        dispatch(loadCustomerListAction(queryParams))
+    }, [queryParams]);
 
-    // let startQueryParams = prepareQueryParams(useLocation().search);
+
+
     // const [queryParams, setQueryParams] = useState(startQueryParams)
 
     return (

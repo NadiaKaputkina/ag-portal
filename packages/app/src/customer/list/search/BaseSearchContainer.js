@@ -6,11 +6,14 @@ import BaseSearchField from "./BaseSearchField";
 
 const BaseSearchContainer = () => {
     let queryParams = prepareQueryParams(useLocation().search);
-    // const [queryParams, setQueryParams] = useState(startQueryParams)
+    
+    const [qParam, setQParam] = useState('')
 
     return (
         <BaseSearchField
             queryParams={queryParams}
+            qParam={qParam}
+            setQParam={setQParam}
         />
     )
 }

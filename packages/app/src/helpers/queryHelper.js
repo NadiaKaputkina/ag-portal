@@ -1,5 +1,5 @@
 const defaultQueryParams = {
-    q: '333',
+    q: '',
     page: 1,
     limit: 5,
     sort: null,
@@ -18,17 +18,19 @@ export const prepareQueryParams = (locationSearch) => {
     }
 }
 
-export const prepareUrl = (baseUrl, queryParams) => {
-    let newUrl = baseUrl;
+export const prepareUrl = (url, queryParams) => {
+    let newUrl = url;
     const newSearchParams = new URLSearchParams();
 
-    Object.keys(queryParams)
-        .forEach((key) => {
-            if (queryParams[key] !== defaultQueryParams[key] && queryParams[key] !== null) {
-                newSearchParams.append(key, queryParams[key])
-            }
-        })
-    newUrl += '?' + newSearchParams.toString()
+    if (JSON.stringify(defaultQueryParams) !== JSON.stringify(queryParams)) {
+        Object.keys(queryParams)
+            .forEach((key) => {
+                if (queryParams[key] !== defaultQueryParams[key] && queryParams[key] !== null) {
+                    newSearchParams.append(key, queryParams[key])
+                }
+            })
+        newUrl += '?' + newSearchParams.toString()
+    }
 
     return newUrl
 }

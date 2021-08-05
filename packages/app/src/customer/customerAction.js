@@ -6,10 +6,10 @@ import {
 } from "./customerReducer"
 
 
-export const loadCustomerListAction = () => {
+export const loadCustomerListAction = (queryParams) => {
     return async (dispatch) => {
         try {
-            const response = await loadCustomerList()
+            const response = await loadCustomerList(queryParams)
             const res = await response.json()
 
             if (res.length) {
