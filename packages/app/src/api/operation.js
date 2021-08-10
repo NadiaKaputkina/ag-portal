@@ -1,3 +1,8 @@
-export const loadOperationList = () => {
-    return fetch('http://localhost:5000/operation/list')
+import { prepareUrl } from "../helpers/queryHelper"
+const baseApiUrl = 'http://localhost:5000'
+
+export const loadOperationList = (queryParams) => {
+    let url = prepareUrl(`${baseApiUrl}/operation/list`, queryParams)
+
+    return fetch(url)
 }

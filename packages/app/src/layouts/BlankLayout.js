@@ -2,11 +2,12 @@ import React from 'react';
 import {
     ThemeProvider,
 } from "@material-ui/core";
-import { useAppBarStyles } from "../shared/styles/rootStyles";
+import { useLayoutStyles } from "../shared/styles/rootStyles";
 import { theme } from '../shared/styles/theme';
+import FooterNavigation from '../shared/components/footer/footerNavigation';
 
 const MainLayout = ({children}) => {
-    const classes = useAppBarStyles();
+    const classes = useLayoutStyles();
 
     return (
         <ThemeProvider theme={theme}>
@@ -14,7 +15,7 @@ const MainLayout = ({children}) => {
                 <div className={classes.layout}>
                     {children}
                 </div>
-                
+                <FooterNavigation />
             </div>
         </ThemeProvider>
     )

@@ -1,16 +1,20 @@
 import React from 'react';
 import {
     AppBar,
+    makeStyles,
     Toolbar,
 } from "@material-ui/core";
-import { useAppBarStyles } from "../../styles/rootStyles";
+import appBarStyles from './appBarStyles';
+
+const useStyles = makeStyles(() => appBarStyles)
 
 const ApplicationBar = () => {
-    const classes = useAppBarStyles();
+    const classes = useStyles();
 
     return (
         <AppBar className={classes.appBar}>
             <Toolbar className={classes.toolbar}>
+                
             </Toolbar>
         </AppBar>
     )

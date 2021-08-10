@@ -1,38 +1,24 @@
+import { yellow } from "@material-ui/core/colors";
+
 const loginStyles = {
     loginForm: {
-        paddingLeft: '8px',
-        marginBottom: '8px',
-        height: '20%',
-        width: '100%',
-        textAlign: 'center',
+        padding: '30px 20px',
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        backgroundColor: 'floralwhite',
-        borderRadius: '8px',
-        border: '1px solid black',
-    },
-    loginLayout: {
-        padding: '16px',
-        height: '300px',
+        minHeight: '100px',
         width: '300px',
-        display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'flexStart',
-        backgroundColor: 'cornflowerblue',
-        borderRadius: '16px',
-        border: '1px solid black',
+        justifyContent: 'flex-start',
+        background: yellow['A200'],
+        boxShadow: '0 10px 30px 0 lightgray',
+        borderRadius: '5px',
     },
-    label: {
-        paddingLeft: '8px',
+    loginFormInput: {
+        margin: '10px 0',
     },
-    loginButtonLayout: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-    },
+    loginFormButton: {
+        marginTop: '30px',
+        height: '50px'
+    }
 }
 
 export default loginStyles;

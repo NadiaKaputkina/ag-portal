@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/registration" component={RegistrationPage}/>
         {/* <Route path="/home" component={Home}/> */}
         <Route path="/customer/list" component={CustomerListPage} exact={true}/>
-        <Route path="/customer/:id" component={CustomerPage}/>
+        <Route path="/customer/:id/item" component={CustomerPage}/>
         <Route path="/customer/new" component={Home}/>
         <Route path="/operation/list" component={OperationListPage}/>
         <Route path="/payment/:id" component={Home}/>

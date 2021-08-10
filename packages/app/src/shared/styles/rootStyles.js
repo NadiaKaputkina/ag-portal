@@ -2,8 +2,6 @@ import {
     makeStyles,
 } from "@material-ui/core";
 
-export const DRAWER_WIDTH = 240;
-
 export const DEFAULT_STYLES = {
     defaultPage: {
         width: "100%",
@@ -21,24 +19,21 @@ export const useDefaultStyles = makeStyles(() => ({
     defaultPage: ({defaultPage}) => defaultPage
 }))
 
-export const useAppBarStyles = makeStyles(() => ({
+export const useLayoutStyles = makeStyles(() => ({
     root: {
-        width: '100%',
-        height: '100%',
-    },
-    toolbar: {
-        paddingRight: 24,
-    },
-    layout: {
+        width: '100vw',
+        height: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
     },
-    socialIcon: {
-        background: 'red',
-        width: '50px',
-        height: '50px',
-    }
+    layout: {
+        width: '90%',
+        alignSelf: 'center',
+        display: 'flex',
+        flex: 1,
+        marginTop: '100px',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+    },
 }));

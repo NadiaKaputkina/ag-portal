@@ -2,14 +2,17 @@ import React from 'react';
 import {
     BottomNavigation,
     BottomNavigationAction,
+    makeStyles,
 } from "@material-ui/core";
-import { useAppBarStyles } from "../../styles/rootStyles";
+import footerStyles from './footerStyles';
+
+const useStyles = makeStyles(() => footerStyles)
 
 const FooterNavigation = () => {
-    const classes = useAppBarStyles();
+    const classes = useStyles();
 
     return (
-        <BottomNavigation className={classes.appBar}>
+        <BottomNavigation className={classes.footer}>
             <BottomNavigationAction  label="Facebook" className={classes.socialIcon} />
             <BottomNavigationAction  label="VK" className={classes.socialIcon} />
             <BottomNavigationAction  label="Instagram" className={classes.socialIcon} />

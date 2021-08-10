@@ -12,10 +12,13 @@ const BaseTableContainer = () => {
     let history = useHistory()
 
     const handleRowClick = (id) => (e) => {
-        history.push(`/customer/${id}`)
+        history.push(`/customer/${id}/item`)
     }
     const handleDeleteButton = (id) => (e) => {
         dispatch(deleteCustomerAction(id))
+    }
+    const handleOperationButton = (id) => (e) => {
+        history.push(`/operation/list?customerId=${id}`)
     }
 
     return (
@@ -23,6 +26,7 @@ const BaseTableContainer = () => {
             customerList={customerList}
             handleRowClick={handleRowClick}
             handleDeleteButton={handleDeleteButton}
+            handleOperationButton={handleOperationButton}
         />
     )
 }

@@ -28,25 +28,21 @@ const OperationTable = (props) => {
                     <TableHead>
                         <TableRow>
                             <TableCell
-                                component="div"
                                 variant="head"
                             >
                                 <span>Id</span>
                             </TableCell>
                             <TableCell
-                                component="div"
                                 variant="head"
                             >
                                 <span>Customer Name</span>
                             </TableCell>
                             <TableCell
-                                component="div"
                                 variant="head"
                             >
                                 <span>Bill</span>
                             </TableCell>
                             <TableCell
-                                component="div"
                                 variant="head"
                             >
                                 <span>Value</span>
@@ -60,10 +56,10 @@ const OperationTable = (props) => {
                             
                             return (
                                 <TableRow key={`operation_${operation.id}`}>
-                                    <TableCell component="th" scope="row">{operation.id}</TableCell>
-                                    <TableCell component="th" scope="row">{operation.name}</TableCell>
-                                    <TableCell align="right">{bankAccount.bill}</TableCell>
-                                    <TableCell align="right">{operation.value}</TableCell>
+                                    <TableCell scope="row">{operation.id}</TableCell>
+                                    <TableCell scope="row">{operation.name}</TableCell>
+                                    <TableCell>{bankAccount.bill}</TableCell>
+                                    <TableCell>{operation.value}</TableCell>
                                 </TableRow>
                             )
                         }

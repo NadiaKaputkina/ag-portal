@@ -3,7 +3,8 @@ const defaultQueryParams = {
     page: 1,
     limit: 5,
     sort: null,
-    order: null
+    order: null,
+    customerId: null,
 }
 
 export const prepareQueryParams = (locationSearch) => {
@@ -15,10 +16,13 @@ export const prepareQueryParams = (locationSearch) => {
         limit: query.get("limit") === null ? defaultQueryParams.limit : parseInt(query.get("limit")),
         sort: query.get("sort") === null ? defaultQueryParams.sort : query.get("sort"),
         order: query.get("order") === null ? defaultQueryParams.order : query.get("order"),
+        customerId: query.get("customerId") === null ? defaultQueryParams.customerId : query.get("customerId"),
     }
 }
 
 export const prepareUrl = (url, queryParams) => {
+    if (!queryParams) return url;
+    
     let newUrl = url;
     const newSearchParams = new URLSearchParams();
 

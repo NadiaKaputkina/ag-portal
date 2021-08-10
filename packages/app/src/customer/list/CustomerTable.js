@@ -10,6 +10,7 @@ import {
     IconButton,
 } from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
+import ReceiptIcon from '@material-ui/icons/Receipt';
 import { DEFAULT_STYLES, useDefaultStyles } from "../../shared/styles/rootStyles";
 import TableCellStatus from './TableCellStatus';
 
@@ -17,7 +18,8 @@ const CustomerTable = (props) => {
     const {
         customerList,
         handleRowClick,
-        handleDeleteButton
+        handleDeleteButton,
+        handleOperationButton,
     } = props;
 
     const classes = useDefaultStyles(DEFAULT_STYLES);
@@ -49,6 +51,11 @@ const CustomerTable = (props) => {
                         </TableCell>
                         <TableCell
                             variant="head"
+                        >
+                            <span>Платежи</span>
+                        </TableCell>
+                        <TableCell
+                            variant="head"
                             align="right"
                         >
                             <span>Actions</span>
@@ -62,7 +69,21 @@ const CustomerTable = (props) => {
                             <TableCell component="th" scope="row" onClick={handleRowClick(customer.id)}>{customer.name}</TableCell>
                             <TableCell onClick={handleRowClick(customer.id)}>{customer.age}</TableCell>
                             <TableCellStatus customer={customer} handleRowClick={handleRowClick} />
+                            <TableCell>
+                                <IconButton
+                                    aria-label="operation"
+                                    onClick={handleOperationButton(customer.id)}
+                                >
+                                    <ReceiptIcon />
+                                </IconButton>
+                            </TableCell>
                             <TableCell align="right">
+                                <IconButton
+                                    aria-label="add"
+                                    onClick={handleDeleteButton(customer.id)}
+                                >
+                                    <DeleteIcon />
+                                </IconButton>
                                 <IconButton
                                     aria-label="delete"
                                     onClick={handleDeleteButton(customer.id)}

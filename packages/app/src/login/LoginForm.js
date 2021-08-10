@@ -20,8 +20,8 @@ const LoginForm = () => {
 
     const formik = useFormik({
         initialValues: {
-          email: 'email@example.com',
-          password: 'password',
+          email: '',
+          password: '',
         },
         onSubmit: (values) => {
           alert(JSON.stringify(values));
@@ -29,12 +29,13 @@ const LoginForm = () => {
     });
     
     return (
-        <div className={classes.loginForm}>
-            <form onSubmit={formik.handleSubmit}>
+        <div>
+            <form onSubmit={formik.handleSubmit} className={classes.loginForm}>
                 <TextField
                     id="email"
                     name="email"
                     label="Email"
+                    className={classes.loginFormInput}
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     error={formik.touched.email && Boolean(formik.errors.email)}
@@ -45,6 +46,7 @@ const LoginForm = () => {
                     name="password"
                     label="Password"
                     type="password"
+                    className={classes.loginFormInput}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     error={formik.touched.password && Boolean(formik.errors.password)}
@@ -54,6 +56,7 @@ const LoginForm = () => {
                     variant='contained'
                     color="primary"
                     type="submit"
+                    className={classes.loginFormButton}
                     onClick={handleLoginButton}
                 >
                     Sign in

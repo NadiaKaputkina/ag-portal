@@ -95,11 +95,11 @@ const BaseSearchField = (props) => {
                 inputProps={{ 'aria-label': 'search' }}
                 onBlur={handleOnBlur}
                 onChange={handleChange}
-                value={qParam}
             />
-            <Button variant="contained" color="primary"
-                onClick={handleClick}>
-                <SearchIcon/>
+            <Button variant="contained" color="primary">
+                <SearchIcon
+                    onClick={handleClick}
+                />
                 Поиск
             </Button>
 
