@@ -1,21 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     AppBar,
+    BottomNavigation,
+    BottomNavigationAction,
     makeStyles,
-    Toolbar,
 } from "@material-ui/core";
 import appBarStyles from './appBarStyles';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
+import SettingsIcon from '@material-ui/icons/Settings';
+import PaymentIcon from '@material-ui/icons/Payment';
 
 const useStyles = makeStyles(() => appBarStyles)
 
 const ApplicationBar = () => {
     const classes = useStyles();
 
+    const [activeMenu, setActiveMenu] = useState('customer');
+
+    const handleMenuChange = (event, newValue) => {
+        console.log(newValue);
+        setActiveMenu(newValue)
+    }
+
     return (
         <AppBar className={classes.appBar}>
-            <Toolbar className={classes.toolbar}>
-                
-            </Toolbar>
+            <BottomNavigation 
+                value={activeMenu} 
+                onChange={handleMenuChange} 
+                classes={{
+                    root: classes.toolbar
+                }}
+                showLabels>
+                <BottomNavigationAction label="Клиенты" value="customer" icon={<PeopleAltIcon />} />
+                <BottomNavigationAction label="Платежи" value="operation" icon={<PaymentIcon />} />
+                <BottomNavigationAction label="Настройки" value="settings" icon={<SettingsIcon />} />
+            </BottomNavigation>
         </AppBar>
     )
 }

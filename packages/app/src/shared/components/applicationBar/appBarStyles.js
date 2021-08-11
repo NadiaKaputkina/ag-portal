@@ -3,7 +3,6 @@ import { yellow } from "@material-ui/core/colors";
 const appBarStyles = {
     appBar: {
         display: 'flex',
-        height: '60px',
         width: '100%',
         flexDirection: 'column',
         justifyContent: 'flex-start',
@@ -12,7 +11,7 @@ const appBarStyles = {
         borderRadius: '5px',
     },
     toolbar: {
-        margin: '10px 0',
+        backgroundColor: 'transparent',
     },
 }
 

@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect'
 
 export const customerListSelector = (state) => state.customer.items;
+export const customerTotalCountSelector = (state) => state.customer.totalCount;
 
 export const customerSelector = (id) => createSelector(
     customerListSelector,

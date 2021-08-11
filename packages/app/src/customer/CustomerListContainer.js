@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from "react-redux";
 import { useLocation } from 'react-router';
 import { prepareQueryParams } from '../helpers/queryHelper';
@@ -14,14 +14,12 @@ const CustomerContainer = () => {
         dispatch(loadCustomerListAction(queryParams))
     }, [queryParams]);
 
-
-
     // const [queryParams, setQueryParams] = useState(startQueryParams)
 
     return (
         <>
-            <BaseSearchContainer />
-            <BaseTableContainer />
+            <BaseSearchContainer queryParams={queryParams}/>
+            <BaseTableContainer queryParams={queryParams}/>
         </>
     )
 }

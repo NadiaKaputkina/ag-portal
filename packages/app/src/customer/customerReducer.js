@@ -4,7 +4,7 @@ export const CUSTOMER_UPDATE_SUCCESS = 'CUSTOMER_UPDATE_SUCCESS'
 
 const initialState = {
     items: [],
-    totalCount: null,
+    totalCount: 100,
     item: {},
 }
 
@@ -13,6 +13,7 @@ export function customerReducer(state = initialState, {type, payload}) {
         case CUSTOMER_LIST_LOAD_SUCCESS:
             return {
                 ...payload,
+                // totalCount: payload.length,
             }
         
         case CUSTOMER_LOAD_SUCCESS:

@@ -10,9 +10,6 @@ export const DEFAULT_STYLES = {
         flexDirection: 'column',
         justifyContent: 'center',
     },
-    table: {
-        marginTop: '100px',
-    }
 }
 
 export const useDefaultStyles = makeStyles(() => ({
@@ -31,7 +28,7 @@ export const useLayoutStyles = makeStyles(() => ({
         alignSelf: 'center',
         display: 'flex',
         flex: 1,
-        marginTop: '100px',
+        marginTop: '90px',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',

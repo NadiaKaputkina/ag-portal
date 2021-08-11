@@ -9,6 +9,9 @@ const loadList = async (req, res) => {
     if (req.query.q) {
         sql.where('name', 'like', `%${req.query.q}%`)
     }
+    if (req.query.limit) {
+        sql.limit(req.query.limit)
+    }
 
     const customerList = await sql 
     
