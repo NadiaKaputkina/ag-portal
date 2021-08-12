@@ -18,10 +18,10 @@ export const loadOperationAction = (queryParams) => {
             const response3 = await loadOperationList(queryParams)
             const res3 = await response3.json()
  
-            if (res1.length) {
+            if (response1.status === 200) {
                 dispatch({
                     type: CUSTOMER_LIST_LOAD_SUCCESS,
-                    payload: {items: res1, totalCount: 0}
+                    payload: res1,
                 })
             } else {
                 return false;
@@ -36,13 +36,12 @@ export const loadOperationAction = (queryParams) => {
                 return false;
             }
 
-            if (res3.length) {
+            if (response3.status === 200) {
                 dispatch({
                     type: OPERATION_LIST_LOAD_SUCCESS,
-                    payload: {items: res3, totalCount: 0}
+                    payload: res3
                 })
             }
-
             
         } catch (e) {
             console.log('e', e)

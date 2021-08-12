@@ -24,7 +24,7 @@ const OperationContainer = () => {
 
     return (
         <>
-            <BaseSearchContainer customerList={customerList    }/>
+            <BaseSearchContainer customerList={customerList}/>
             <OperationTable operationList={operationList} bankAccountList={bankAccountList} />
         </>
     )

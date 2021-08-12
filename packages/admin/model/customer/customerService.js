@@ -2,20 +2,29 @@ const { query } = require('express');
 const db = require('../../db');
 
 const loadList = async (req, res) => {
-    const sql = db.select().table('customer')
+    const { q, page, limit, sort, order, customerId } = req.query;
 
+    const sql = db.table('customer')
     console.log('QUERY -> ', req.query);
 
-    if (req.query.q) {
-        sql.where('name', 'like', `%${req.query.q}%`)
+    if (q) {
+        sql.where('name', 'like', `%${q}%`)
     }
-    if (req.query.limit) {
-        sql.limit(req.query.limit)
+    
+    const sqlTotalCount = sql.clone();
+
+    if (limit) {
+        sql.limit(limit)
+    }
+    if (page > 1) {
+        sql.offset((page - 1) * limit)
     }
 
-    const customerList = await sql 
-    
-    res.send(customerList);
+    const customerList = await sql.select()
+    const totalCount = await sqlTotalCount.count('id')
+
+    res.send({ items: customerList, totalCount: totalCount[0]['count(`id`)'] });
+    // res.send({ items: customerList });
 };
 
 const loadCustomer = async (req, res) => {

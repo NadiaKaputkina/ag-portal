@@ -28,7 +28,7 @@ const AdvancedSearchContainer = (props) => {
     return (
         <div className={classes.advancedSearchWrapper}>
             <Autocomplete
-                id="combo-box-demo"
+                id="lastName"
                 options={[]}
                 getOptionLabel={(option) => option.title}
                 className={classes.searchSelect}

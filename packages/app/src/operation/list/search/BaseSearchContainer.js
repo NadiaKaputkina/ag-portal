@@ -28,14 +28,14 @@ const BaseSearchContainer = (props) => {
     return (
         <div className={classes.search}>
             <Autocomplete
-                id="combo-box-demo"
+                id="lastName2"
                 options={[]}
                 getOptionLabel={(option) => option.title}
                 style={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Фамилия" variant="outlined" />}
             />
             <Autocomplete
-                id="combo-box-demo"
+                id="firstName2"
                 options={customerList}
                 getOptionLabel={(option) => option.name}
                 style={{ width: 300 }}

@@ -12,10 +12,10 @@ export const loadCustomerListAction = (queryParams) => {
             const response = await loadCustomerList(queryParams)
             const res = await response.json()
 
-            if (res.length) {
+            if (response.status === 200) {
                 dispatch({
                     type: CUSTOMER_LIST_LOAD_SUCCESS,
-                    payload: {items: res, totalCount: 0}
+                    payload: res
                 })
             }
         } catch (e) {

@@ -20,33 +20,26 @@ const BaseTablePagination = (props) => {
     //     let newUrl = prepareUrl('/customer/list', queryParams)
     //     history.push(newUrl)
     // };
-    const handleChangePage = (e, page) => {
-        console.log(page)
-        //replaceUrl()
-        let newUrl = prepareUrl('/customer/list', queryParams)
+    const handleChangePage = (e, newPage) => {
+        let newUrl = prepareUrl('/customer/list', { ...queryParams, page: newPage + 1})
         history.push(newUrl)
     }
     const handleChangeRowsPerPage = (e) => {
         const limit = e.target.value
-        // replaceUrl(limit)
         let newUrl = prepareUrl('/customer/list', { ...queryParams, limit })
         history.push(newUrl)
     }
-    
+
     return (
-        <>
-            { 
-                <TablePagination
-                    rowsPerPageOptions={[2, 5, 10, 25, {label: 'All', value: -1}]}
-                    component="div"
-                    count={customerTotalCount}
-                    rowsPerPage={typeof queryParams.limit === 'string' ? parseInt(queryParams.limit) : queryParams.limit}
-                        page={queryParams.page - 1}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                />
-            }
-        </>
+        <TablePagination
+            rowsPerPageOptions={[2, 5, 10, 25, {label: 'All', value: -1}]}
+            component="div"
+            count={customerTotalCount}
+            rowsPerPage={typeof queryParams.limit === 'string' ? parseInt(queryParams.limit) : queryParams.limit}
+            page={queryParams.page - 1}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+        />
     )
 }
 

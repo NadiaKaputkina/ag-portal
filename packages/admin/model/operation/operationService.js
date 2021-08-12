@@ -1,14 +1,22 @@
 const db = require('../../db');
 
 const loadList = async (req, res) => {
-    const operationList = await db.table('operation')
+    const { q, page, limit, sort, order, customerId } = req.query;
+
+    const sql = db.table('operation')
         .join('customer', 'customer.id', 'operation.customerId')
-        .select(['operation.id', 'operation.bankAccountId', 'operation.value'])
-    
-        // console.log('---->', db.table('operation')
-        // .join('customer', 'customer.id', 'operation.customerId')
-        // .select(['customer.id', 'operation.id as operationId', 'operation.bankAccountId', 'operation.value']).toSQL().toNative());
-    res.send(operationList);
+        
+    // if (customerId) {
+    //     sql.where('customer.id', customerId)
+    // }
+
+    const sqlTotalCount = sql.clone();
+
+    const operationList = await sql.select(['operation.id', 'customer.name', 'operation.bankAccountId', 'operation.value'])
+    const totalCount = await sqlTotalCount.count()
+    console.log("🚀 ~ file: operationService.js ~ line 18 ~ loadList ~ totalCount", totalCount)
+
+    res.send({ items: operationList, totalCount: totalCount[0]['count(*)'] });
 }
 
 const loadOperation = async (req, res) => {

@@ -29,7 +29,7 @@ const LoginForm = () => {
     });
     
     return (
-        <div>
+        <>
             <form onSubmit={formik.handleSubmit} className={classes.loginForm}>
                 <TextField
                     id="email"
@@ -62,7 +62,7 @@ const LoginForm = () => {
                     Sign in
                 </Button>
             </form>
-        </div>
+        </>
     );  
 }
 
