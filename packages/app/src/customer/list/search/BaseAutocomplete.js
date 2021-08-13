@@ -23,13 +23,7 @@ const BaseAutocomplete = (props) => {
         });
     }
 
-    // const [value, setValue] = useState(getAutocompleteValue())
-    
-    // console.log("🚀 ~ file: BaseAutocomplete.js ~ line 27 ~ BaseAutocomplete ~ value", value)
-    // console.log("🚀 ~ file: BaseAutocomplete.js ~ line 27 ~ BaseAutocomplete ~ getAutocompleteValue()", getAutocompleteValue())
-
     const handleChangeAutocomplete = (event, newValue) => {
-        console.log("🚀 ~ file: BaseAutocomplete.js ~ line 25 ~ handleChangeAutocomplete ~ newValue", newValue)
         setStateParams({
             ...stateParams,
             [stateParamFieldName]: newValue ? newValue[optionFieldName] : null

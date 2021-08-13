@@ -11,7 +11,7 @@ const TableCellStatus = (props) => {
 
     return (
         <TableCell onClick={handleRowClick(customer.id)}>
-            {customer.isEnable ? 'Active' : 'Disabled'}
+            {customer.isEnable ? 'Enabled' : 'Disabled'}
         </TableCell>       
     )
 }

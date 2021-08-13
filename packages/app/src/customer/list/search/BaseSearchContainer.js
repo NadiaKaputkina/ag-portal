@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BaseSearchField from "./BaseSearchField";
 import { Button, makeStyles, Collapse, IconButton } from "@material-ui/core";
 import searchStyles from "./searchStyles";
@@ -14,7 +14,6 @@ const useStyles = makeStyles(() => searchStyles)
 const BaseSearchContainer = (props) => {
     const {
         queryParams
-
     } = props
 
     const classes = useStyles()
@@ -26,12 +25,18 @@ const BaseSearchContainer = (props) => {
         setExpanded(!expanded)
     };
 
+    const queryParamsStr = JSON.stringify(queryParams);
+    useEffect(() => {
+        setStateParams(queryParams)
+    }, [queryParamsStr]);
+
     let history = useHistory()
     const replaceUrl = () => {
         let newUrl = prepareUrl('/customer/list', stateParams)
         history.push(newUrl)
     };
     const handleClick = () => {
+        console.log(stateParams)
         replaceUrl()
     }
     return (

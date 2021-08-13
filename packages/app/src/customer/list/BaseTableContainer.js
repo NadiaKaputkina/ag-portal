@@ -26,9 +26,7 @@ const BaseTableContainer = (props) => {
     const handleOperationButton = (id) => (e) => {
         history.push(`/operation/list?customerId=${id}`)
     }
-    const handleAddPaymentButton = (id) => (e) => {
-        history.push(`/operation/list?customerId=${id}`)
-    }
+   
     return (
         <TableContainer component={Paper}>
             <CustomerTable 
@@ -36,7 +34,6 @@ const BaseTableContainer = (props) => {
                 handleRowClick={handleRowClick}
                 handleDeleteButton={handleDeleteButton}
                 handleOperationButton={handleOperationButton}
-                handleAddPaymentButton={handleAddPaymentButton}
             />
             <BaseTablePagination queryParams={queryParams} />
         </TableContainer>

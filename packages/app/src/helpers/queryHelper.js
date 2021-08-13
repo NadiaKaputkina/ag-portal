@@ -5,6 +5,7 @@ const defaultQueryParams = {
     sort: null,
     order: null,
     customerId: null,
+    status: 'enabled',
 }
 
 export const prepareQueryParams = (locationSearch) => {
@@ -17,6 +18,7 @@ export const prepareQueryParams = (locationSearch) => {
         sort: query.get("sort") === null ? defaultQueryParams.sort : query.get("sort"),
         order: query.get("order") === null ? defaultQueryParams.order : query.get("order"),
         customerId: query.get("customerId") === null ? defaultQueryParams.customerId : query.get("customerId"),
+        status: query.get("status") === null ? defaultQueryParams.status : query.get("status"),
     }
 }
 

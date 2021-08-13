@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import ReceiptIcon from '@material-ui/icons/Receipt';
-import AddBoxIcon from '@material-ui/icons/AddBox';
+
 import { DEFAULT_STYLES, useDefaultStyles } from "../../shared/styles/rootStyles";
 import TableCellStatus from './TableCellStatus';
 
@@ -29,7 +29,6 @@ const CustomerTable = (props) => {
         handleRowClick,
         handleDeleteButton,
         handleOperationButton,
-        handleAddPaymentButton,
     } = props;
 
     const classes = useDefaultStyles(DEFAULT_STYLES);
@@ -93,13 +92,6 @@ const CustomerTable = (props) => {
                             </IconButton>
                         </TableCell>
                         <TableCell align="right">
-                            <IconButton
-                                aria-label="addPayment"
-                                color="secondary"
-                                onClick={handleAddPaymentButton(customer.id)}
-                            >
-                                <AddBoxIcon />
-                            </IconButton>
                             <IconButton
                                 aria-label="delete"
                                 color="primary"

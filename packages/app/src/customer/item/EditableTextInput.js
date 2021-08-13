@@ -26,6 +26,7 @@ const EditableTextInput = (props) => {
         <Grid item xs={6} data-for={fieldName} onClick={handleEditClick}>
             { isEdit
                 ? <TextField
+                    variant="outlined"
                     fullWidth
                     id={fieldName}
                     name={fieldName}

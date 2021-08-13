@@ -1,12 +1,11 @@
-import { useState } from "react";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { makeStyles } from "@material-ui/core";
+import {  makeStyles } from "@material-ui/core";
 import searchStyles from "./searchStyles";
 import BaseAutocomplete from "./BaseAutocomplete";
 import { useSelector } from "react-redux";
 import { customerListSelector } from "../../customerSelectors";
-
+import BaseSwitch from "./BaseSwitch";
 
 const useStyles = makeStyles(() => searchStyles)
 
@@ -19,12 +18,11 @@ const AdvancedSearchContainer = (props) => {
     const classes = useStyles();
     const customerList = useSelector(customerListSelector)
 
-
     const handleChangeAutocomplete = (event, newValue) => {
         // console.log('event', event);
         // console.log('newValue', newValue);
     }
-    
+
     return (
         <div className={classes.advancedSearchWrapper}>
             <Autocomplete
@@ -44,6 +42,9 @@ const AdvancedSearchContainer = (props) => {
                 label={'Имя'}
                 stateParams={stateParams}
                 setStateParams={setStateParams}
+            />
+            <BaseSwitch 
+                stateParams={stateParams}
             />
         </div>
     )

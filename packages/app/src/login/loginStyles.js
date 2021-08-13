@@ -14,6 +14,7 @@ const loginStyles = {
     },
     loginFormInput: {
         margin: '10px 0',
+        backgroundColor: '#fff'
     },
     loginFormButton: {
         marginTop: '30px',

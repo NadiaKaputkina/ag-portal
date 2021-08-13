@@ -35,6 +35,7 @@ const LoginForm = () => {
                     id="email"
                     name="email"
                     label="Email"
+                    variant="outlined"
                     className={classes.loginFormInput}
                     value={formik.values.email}
                     onChange={formik.handleChange}
@@ -46,6 +47,7 @@ const LoginForm = () => {
                     name="password"
                     label="Password"
                     type="password"
+                    variant="outlined"
                     className={classes.loginFormInput}
                     value={formik.values.password}
                     onChange={formik.handleChange}
