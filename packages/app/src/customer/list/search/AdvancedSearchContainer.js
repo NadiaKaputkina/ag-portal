@@ -3,9 +3,8 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import {  makeStyles } from "@material-ui/core";
 import searchStyles from "./searchStyles";
 import BaseAutocomplete from "./BaseAutocomplete";
-import { useSelector } from "react-redux";
-import { customerListSelector } from "../../customerSelectors";
 import BaseSwitch from "./BaseSwitch";
+import { useStore } from '../../../store';
 
 const useStyles = makeStyles(() => searchStyles)
 
@@ -16,7 +15,9 @@ const AdvancedSearchContainer = (props) => {
     } = props;
 
     const classes = useStyles();
-    const customerList = useSelector(customerListSelector)
+    const { CustomerStore } = useStore();
+
+    const customerList = CustomerStore.items
 
     const handleChangeAutocomplete = (event, newValue) => {
         // console.log('event', event);

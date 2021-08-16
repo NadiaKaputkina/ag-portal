@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
 import { useFormik } from 'formik';
-import EditableTextInput from "./EditableTextInput";
-import { useDispatch } from "react-redux";
+// import EditableTextInput from "./EditableTextInput";
 import { updateCustomerAction } from "../customerAction";
 
 const CustomerForm = (props) => {
     const { customer } = props;
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     const formik = useFormik({
         initialValues: {
@@ -18,7 +17,7 @@ const CustomerForm = (props) => {
         },
         enableReinitialize: true,
         onSubmit: (values) => {
-            dispatch(updateCustomerAction(values))
+            // dispatch(updateCustomerAction(values))
         },
     });
 
@@ -43,12 +42,12 @@ const CustomerForm = (props) => {
                             Имя
                         </Grid>
                         <Grid item xs={6}>
-                            <EditableTextInput 
+                            {/* <EditableTextInput 
                                 currentFieldName={currentFieldName}
                                 setCurrentFieldName={setCurrentFieldName}
                                 fieldName={'name'}
                                 formik={formik}
-                            />
+                            /> */}
                         </Grid>
                     </Grid>
                     <Grid container item xs={12} spacing={3}>

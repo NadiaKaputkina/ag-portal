@@ -1,19 +1,20 @@
 import { Paper, TableContainer } from '@material-ui/core';
+import { observer } from 'mobx-react';
 import React from 'react'
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router';
-import { deleteCustomerAction } from '../customerAction';
-import { customerListSelector } from '../customerSelectors';
-import BaseTablePagination from './BaseTablePagination';
+//import { deleteCustomerAction } from '../customerAction';
+//import { customerListSelector } from '../customerSelectors';
+// import BaseTablePagination from './BaseTablePagination';
 import CustomerTable from './CustomerTable';
 
-const BaseTableContainer = (props) => {
+const BaseTableContainer = observer((props) => {
     const {
-        queryParams
+        queryParams,
+        customerList
     } = props
 
-    const dispatch = useDispatch()
-    const customerList = useSelector(customerListSelector)
+    // const dispatch = useDispatch()
+    // const customerList = useSelector(customerListSelector)
 
     let history = useHistory()
 
@@ -21,7 +22,7 @@ const BaseTableContainer = (props) => {
         history.push(`/customer/${id}/item`)
     }
     const handleDeleteButton = (id) => (e) => {
-        dispatch(deleteCustomerAction(id))
+        // dispatch(deleteCustomerAction(id))
     }
     const handleOperationButton = (id) => (e) => {
         history.push(`/operation/list?customerId=${id}`)
@@ -35,9 +36,9 @@ const BaseTableContainer = (props) => {
                 handleDeleteButton={handleDeleteButton}
                 handleOperationButton={handleOperationButton}
             />
-            <BaseTablePagination queryParams={queryParams} />
+            {/* <BaseTablePagination queryParams={queryParams} /> */}
         </TableContainer>
     )
-}
+})
 
 export default BaseTableContainer;

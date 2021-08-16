@@ -1,27 +1,25 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from "react-redux";
 import { useLocation } from 'react-router';
 import { prepareQueryParams } from '../helpers/queryHelper';
-import { loadCustomerListAction } from './customerAction';
+import { observer } from 'mobx-react';
 import BaseTableContainer from './list/BaseTableContainer';
+import { useStore } from '../store';
 import BaseSearchContainer from './list/search/BaseSearchContainer';
 
-const CustomerContainer = () => {
+const CustomerListContainer = observer(() => {
     let queryParams = prepareQueryParams(useLocation().search);
-    const dispatch = useDispatch()
+    const { CustomerStore } = useStore();
 
     useEffect(() => {
-        dispatch(loadCustomerListAction(queryParams))
-    }, [queryParams]);
-
-    // const [queryParams, setQueryParams] = useState(startQueryParams)
+        CustomerStore.loadCustomerList(queryParams)
+    }, [JSON.stringify(queryParams)]);
 
     return (
         <>
             <BaseSearchContainer queryParams={queryParams}/>
-            <BaseTableContainer queryParams={queryParams}/>
+            <BaseTableContainer customerList={CustomerStore.items} queryParams={queryParams}/>
         </>
     )
-}
+})
 
-export default CustomerContainer;
+export default CustomerListContainer;

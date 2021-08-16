@@ -8,10 +8,11 @@ import { useHistory } from 'react-router';
 import { prepareUrl } from "../../../helpers/queryHelper";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
+import { observer } from "mobx-react";
 
 const useStyles = makeStyles(() => searchStyles)
 
-const BaseSearchContainer = (props) => {
+const BaseSearchContainer = observer((props) => {
     const {
         queryParams
     } = props
@@ -74,7 +75,7 @@ const BaseSearchContainer = (props) => {
             </Button>
         </div>
     )
-}
+})
 
 export default BaseSearchContainer
 

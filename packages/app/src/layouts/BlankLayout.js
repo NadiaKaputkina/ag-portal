@@ -4,7 +4,7 @@ import {
 } from "@material-ui/core";
 import { useLayoutStyles } from "../shared/styles/rootStyles";
 import { theme } from '../shared/styles/theme';
-import FooterNavigation from '../shared/components/footer/footerNavigation';
+// import FooterNavigation from '../shared/components/footer/footerNavigation';
 
 const MainLayout = ({children}) => {
     const classes = useLayoutStyles();
@@ -15,7 +15,7 @@ const MainLayout = ({children}) => {
                 <div className={classes.layout}>
                     {children}
                 </div>
-                <FooterNavigation />
+                {/* <FooterNavigation /> */}
             </div>
         </ThemeProvider>
     )
