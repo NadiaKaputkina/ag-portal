@@ -22,6 +22,7 @@ const BaseSearchContainer = observer((props) => {
     const [stateParams, setStateParams] = useState(queryParams)
     
     const [expanded, setExpanded] = useState(false)
+
     const handleExpandClick = () => {
         setExpanded(!expanded)
     };

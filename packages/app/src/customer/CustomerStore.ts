@@ -21,7 +21,6 @@ class CustomerStore {
 
       if (response.status === 200) {
         runInAction(() => {
-          console.log('runInAction')
           this.items = res.items
           this.totalCount = res.totalCount
         })

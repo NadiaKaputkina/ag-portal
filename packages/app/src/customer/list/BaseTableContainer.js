@@ -4,7 +4,7 @@ import React from 'react'
 import { useHistory } from 'react-router';
 //import { deleteCustomerAction } from '../customerAction';
 //import { customerListSelector } from '../customerSelectors';
-// import BaseTablePagination from './BaseTablePagination';
+import BaseTablePagination from './BaseTablePagination';
 import CustomerTable from './CustomerTable';
 
 const BaseTableContainer = observer((props) => {
@@ -31,12 +31,13 @@ const BaseTableContainer = observer((props) => {
     return (
         <TableContainer component={Paper}>
             <CustomerTable 
+                queryParams={queryParams}
                 customerList={customerList}
                 handleRowClick={handleRowClick}
                 handleDeleteButton={handleDeleteButton}
                 handleOperationButton={handleOperationButton}
             />
-            {/* <BaseTablePagination queryParams={queryParams} /> */}
+            <BaseTablePagination queryParams={queryParams} />
         </TableContainer>
     )
 })

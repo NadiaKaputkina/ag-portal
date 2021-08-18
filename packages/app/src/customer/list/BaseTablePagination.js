@@ -2,17 +2,16 @@ import React from 'react'
 import {
     TablePagination,
 } from "@material-ui/core";
-import { useSelector } from 'react-redux';
-import { customerTotalCountSelector } from '../customerSelectors';
 import { useHistory } from 'react-router';
 import { prepareUrl } from '../../helpers/queryHelper';
+import { observer } from 'mobx-react';
+import { useStore } from '../../store';
 
-const BaseTablePagination = (props) => {
+const BaseTablePagination = observer((props) => {
     const {
         queryParams
     } = props;
-
-    const customerTotalCount = useSelector(customerTotalCountSelector)
+    const { CustomerStore } = useStore();
     
     let history = useHistory()
 
@@ -34,13 +33,13 @@ const BaseTablePagination = (props) => {
         <TablePagination
             rowsPerPageOptions={[2, 5, 10, 25, {label: 'All', value: -1}]}
             component="div"
-            count={customerTotalCount}
+            count={CustomerStore.totalCount}
             rowsPerPage={typeof queryParams.limit === 'string' ? parseInt(queryParams.limit) : queryParams.limit}
             page={queryParams.page - 1}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
         />
     )
-}
+})
 
 export default BaseTablePagination;
