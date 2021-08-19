@@ -1,7 +1,5 @@
 import { TableCell, TableHead, TableRow, TableSortLabel, withStyles } from "@material-ui/core";
 import { observer } from "mobx-react";
-import { useHistory } from "react-router";
-import { prepareUrl } from "../../helpers/queryHelper";
 
 const headCells: Object[] = [
     { column: 'id', label: 'N' },
@@ -24,44 +22,11 @@ const EnhancedTableHead = observer((props: any) => {
     const {
         queryParams,
         classes,
+        createSortHandler,
     } = props
 
-    let history = useHistory()
-    // const [stateOrderBy, setStateOrderBy] = useState<stateOrderByType>(queryParams.orderBy || [])
-   
-    const replaceUrl = (orderBy: Object[]) => {
-        let newUrl = prepareUrl('/customer/list', 
-            { ...queryParams, orderBy })
-        history.push(newUrl)
-    };
-
-    const createSortHandler = (headCell: any) => (e: any): void => {
-        let orderBy: Object[] = [...queryParams.orderBy]
-
-        const stateOrderByItem = getOrderFromURL(headCell);
-        
-        if (stateOrderByItem) {
-            const i: number = orderBy.findIndex((order: any) => order.column === headCell.column)
-
-            if (stateOrderByItem.order) {
-                orderBy.splice(i, 1)
-            } else {
-                orderBy[i] = { ...stateOrderByItem, order: 'desc' }
-            }
-        } else {
-            orderBy.push({ column: headCell.column })
-        }
-    
-        replaceUrl(orderBy)
-    };
-
     const getOrderFromURL = (headCell: any) => {
-        // const stateOrderByItem = stateOrderBy.find(item => item.column === headCell.column)
         const stateOrderByItem = queryParams.orderBy.find((orderItem: any) => orderItem.column === headCell.column)
-
-        // if (stateOrderByItem) return stateOrderByItem.order || 'asc'
-
-        // return false
         return stateOrderByItem
     }
 

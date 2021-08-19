@@ -20,6 +20,7 @@ const CustomerTable = (props) => {
         handleDeleteButton,
         handleOperationButton,
         queryParams,
+        createSortHandler,
     } = props;
 
     const classes = useDefaultStyles(DEFAULT_STYLES);
@@ -29,6 +30,7 @@ const CustomerTable = (props) => {
             <EnhancedTableHead
               classes={classes}
               queryParams={queryParams}
+              createSortHandler={createSortHandler}
             />
             <TableBody>
                 {customerList.map((customer) => (
