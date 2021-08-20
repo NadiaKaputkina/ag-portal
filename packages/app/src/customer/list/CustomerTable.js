@@ -12,16 +12,18 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import { DEFAULT_STYLES, useDefaultStyles } from "../../shared/styles/rootStyles";
 import TableCellStatus from './TableCellStatus';
 import EnhancedTableHead from './EnhancedTableHead';
+import { observer } from 'mobx-react';
 
-const CustomerTable = (props) => {
+const CustomerTable = observer((props) => {
     const {
-        customerList,
+        store,
         handleRowClick,
         handleDeleteButton,
         handleOperationButton,
         queryParams,
         createSortHandler,
     } = props;
+        console.log("🚀 ~ file: CustomerTable.js ~ line 26 ~ CustomerTable ~ queryParams", queryParams)
 
     const classes = useDefaultStyles(DEFAULT_STYLES);
 
@@ -33,7 +35,7 @@ const CustomerTable = (props) => {
               createSortHandler={createSortHandler}
             />
             <TableBody>
-                {customerList.map((customer) => (
+                {store.items.map((customer) => (
                     <TableRow key={`customer_${customer.id}`}>
                         <TableCell onClick={handleRowClick(customer.id)}>{customer.id}</TableCell>
                         <TableCell onClick={handleRowClick(customer.id)}>{customer.lastName}</TableCell>
@@ -52,7 +54,7 @@ const CustomerTable = (props) => {
                             <IconButton
                                 aria-label="delete"
                                 color="primary"
-                                onClick={handleDeleteButton(customer.id)}
+                                onClick={handleDeleteButton(customer.id, queryParams)}
                             >
                                 <DeleteIcon />
                             </IconButton>
@@ -62,6 +64,6 @@ const CustomerTable = (props) => {
             </TableBody>
         </Table>
     )
-}
+})
 
 export default CustomerTable;

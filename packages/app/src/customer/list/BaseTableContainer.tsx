@@ -3,21 +3,17 @@ import { observer } from 'mobx-react';
 import React from 'react'
 import { useHistory } from 'react-router';
 import { prepareUrl } from '../../helpers/queryHelper';
-//import { deleteCustomerAction } from '../customerAction';
-//import { customerListSelector } from '../customerSelectors';
+import { useStore } from '../../store';
 import BaseTablePagination from './BaseTablePagination';
 import CustomerTable from './CustomerTable';
 
 const BaseTableContainer = observer((props: any) => {
     const {
         queryParams,
-        customerList
     } = props
 
-    // const dispatch = useDispatch()
-    // const customerList = useSelector(customerListSelector)
-
     let history = useHistory()
+    const { CustomerStore } = useStore();
    
     const replaceUrl = (orderBy: Object[]) => {
         let newUrl = prepareUrl('/customer/list', 
@@ -27,8 +23,8 @@ const BaseTableContainer = observer((props: any) => {
     const handleRowClick = (id: number) => (e: any) => {
         history.push(`/customer/${id}/item`)
     }
-    const handleDeleteButton = (id: number) => (e: any) => {
-        // dispatch(deleteCustomerAction(id))
+    const handleDeleteButton = (id: number, queryParams: any) => (e: any) => {
+        CustomerStore.delete(id, queryParams)
     }
     const handleOperationButton = (id: number) => (e: any) => {
         history.push(`/operation/list?customerId=${id}`)
@@ -58,7 +54,7 @@ const BaseTableContainer = observer((props: any) => {
         <TableContainer component={Paper}>
             <CustomerTable 
                 queryParams={queryParams}
-                customerList={customerList}
+                store={CustomerStore}
                 handleRowClick={handleRowClick}
                 handleDeleteButton={handleDeleteButton}
                 handleOperationButton={handleOperationButton}

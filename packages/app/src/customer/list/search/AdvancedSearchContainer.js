@@ -1,10 +1,9 @@
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import {  makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import searchStyles from "./searchStyles";
 import BaseAutocomplete from "./BaseAutocomplete";
-import BaseSwitch from "./BaseSwitch";
+// import BaseSwitch from "./BaseSwitch";
 import { useStore } from '../../../store';
+import BaseSelect from './BaseSelect';
 
 const useStyles = makeStyles(() => searchStyles)
 
@@ -19,32 +18,22 @@ const AdvancedSearchContainer = (props) => {
 
     const customerList = CustomerStore.items
 
-    const handleChangeAutocomplete = (event, newValue) => {
-        // console.log('event', event);
-        // console.log('newValue', newValue);
-    }
-
     return (
         <div className={classes.advancedSearchWrapper}>
-            <Autocomplete
-                id="lastName"
-                options={[]}
-                getOptionLabel={(option) => option.title}
-                className={classes.searchSelect}
-                onChange={handleChangeAutocomplete}
-                renderInput={(params) => <TextField {...params} label="Фамилия" variant="outlined" />}
-            />
             <BaseAutocomplete
                 id='customerNameFilter'
                 options={customerList}
-                fieldName={'name'}
+                fieldName={'lastName'}
                 optionFieldName={'id'}
                 stateParamFieldName={'customerId'}
-                label={'Имя'}
+                label={'Фамилия'}
                 stateParams={stateParams}
                 setStateParams={setStateParams}
             />
-            <BaseSwitch 
+            {/* <BaseSwitch 
+                stateParams={stateParams}
+            /> */}
+            <BaseSelect
                 stateParams={stateParams}
             />
         </div>

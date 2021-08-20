@@ -17,7 +17,7 @@ const CustomerListContainer = observer(() => {
     return (
         <>
             <BaseSearchContainer queryParams={queryParams}/>
-            <BaseTableContainer customerList={CustomerStore.items} queryParams={queryParams}/>
+            <BaseTableContainer queryParams={queryParams}/>
         </>
     )
 })

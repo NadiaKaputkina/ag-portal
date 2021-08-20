@@ -2,7 +2,14 @@ const { query } = require('express');
 const db = require('../../db');
 
 const loadList = async (req, res) => {
-    const { q, page, limit, customerId, isEnable, orderBy } = req.query;
+    const { 
+        q, 
+        page = 1, 
+        limit = 5, 
+        customerId, 
+        isEnable = 'enabled', 
+        orderBy 
+    } = req.query;
 
     const sql = db.table('customer')
     // console.log('QUERY -> ', req.query);
@@ -16,10 +23,9 @@ const loadList = async (req, res) => {
             sql.where('isEnable', 0)
             break
         case 'enabled':
-        case undefined: 
             sql.where('isEnable', 1)
             break
-        case 'all': 
+        default: 
             break
     }
     

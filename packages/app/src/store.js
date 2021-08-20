@@ -1,8 +1,10 @@
 import React from "react";
-import CustomerStore from "./customer/CustomerStore"
+import CustomerStore from "./customer/CustomerStore";
+import SnackBarStore from './layouts/snackBar/SnackBarStore';
 
 const store =  {
-    CustomerStore
+    CustomerStore,
+    SnackBarStore,
 }
 
 /* Store helpers */

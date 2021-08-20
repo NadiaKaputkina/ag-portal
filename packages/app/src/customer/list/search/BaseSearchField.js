@@ -21,7 +21,7 @@ const BaseSearchField = (props) => {
 
     return (
         <InputBase
-            placeholder="Введите имя или фамилию для поиска"
+            placeholder="Введите имя для поиска"
             classes={{
                 input: classes.searchInput,
             }}
