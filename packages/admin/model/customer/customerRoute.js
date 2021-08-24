@@ -1,8 +1,9 @@
 const express = require('express');
-const { loadList, loadCustomer, updateCustomer, addCustomer, editCustomer, deleteCustomer } = require('./customerService');
+const { loadList, loadCustomer, updateCustomer, addCustomer, editCustomer, deleteCustomer, loadCustomersLastNameList } = require('./customerService');
 const router = express.Router();
 
 router.get('/list', loadList);
+router.get('/lastNameList', loadCustomersLastNameList);
 router.get('/:id', loadCustomer);
 router.post('/:id/update', updateCustomer);
 

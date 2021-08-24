@@ -13,8 +13,9 @@ export class SnackBarStore {
     this.message = '';
   }
 
-  open() {
-    this.isOpen = true
+  open(message: string, severity?: severityType) {
+    this.isOpen = true;
+    this.message = message;
   }
 
   close() {

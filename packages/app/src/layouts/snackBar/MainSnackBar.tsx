@@ -2,13 +2,14 @@ import React, { FC }  from 'react'
 import { Snackbar } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import { SnackBarStore } from './SnackBarStore';
+import { observer } from 'mobx-react';
 
 export interface MainSnackBarProps {
     store: SnackBarStore,
     handleClose: () => void
 }
 
-const MainSnackBar: FC<MainSnackBarProps> = (props) => {
+const MainSnackBar: FC<MainSnackBarProps> = observer((props) => {
     const {
         store,
         handleClose
@@ -26,6 +27,6 @@ const MainSnackBar: FC<MainSnackBarProps> = (props) => {
             </Alert>
         </Snackbar>
     )
-}
+})
 
 export default MainSnackBar

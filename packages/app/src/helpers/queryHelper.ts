@@ -4,24 +4,33 @@ export type stateOrderByItemType = {
 }
 export type stateOrderByType = stateOrderByItemType[]
 
-export type queryParamsType = {
-    q: string,
-    page: number,
-    limit: number,
-    customerId: number | null,
-    isEnable: null | '',
+export interface IOrderByItem {
+    column: string,
+    order?: 'asc' | 'desc',
+}
+
+// export type queryParamsType = {
+//     q: string,
+//     page: number,
+//     limit: number,
+//     customerId: number | null,
+//     isEnable: null | '',
+//     orderBy: IOrderByItem[]
+// }
+export interface IQueryParams {
+    [index: string]: any,
     orderBy: Object[]
 }
 
-type defaultQueryParamsType = {
-    q: string,
-    page: number,
-    limit: number,
-    customerId: (number | null),
-    isEnable: 'enabled' | '',
-    orderBy: Object[]
-}
-const defaultQueryParams: defaultQueryParamsType = {
+// type defaultQueryParamsType = {
+//     q: string,
+//     page: number,
+//     limit: number,
+//     customerId: (number | null),
+//     isEnable: 'enabled' | '',
+//     orderBy: IOrderByItem[]
+// }
+const defaultQueryParams: IQueryParams = {
     q: '',
     page: 1,
     limit: 5,
@@ -43,23 +52,23 @@ export const prepareQueryParams = (locationSearch: string) => {
     }
 }
 
-export const prepareUrl = (url: string, queryParams: queryParamsType): string => {
+export const prepareUrl = (url: string, queryParams: IQueryParams): string => {
     if (!queryParams) return url;
 
     let newUrl = url;
     const newSearchParams = new URLSearchParams();
 
     if (JSON.stringify(defaultQueryParams) !== JSON.stringify(queryParams)) {
-        (Object.keys(queryParams) as Array<keyof queryParamsType>)
+        (Object.keys(queryParams) as Array<keyof IQueryParams>)
             .forEach((key) => {
                 const currentParam = queryParams[key]
                 if (JSON.stringify(currentParam) !== JSON.stringify(defaultQueryParams[key]) && currentParam !== null) {
                     if (Array.isArray(currentParam) && currentParam.length) {
-                        newSearchParams.append(key, JSON.stringify(currentParam))
+                        newSearchParams.append(key as string, JSON.stringify(currentParam))
                         return
                     }
                     
-                    newSearchParams.append(key, queryParams[key] as string)
+                    newSearchParams.append(key as string, queryParams[key] as string)
                 }
             })
 

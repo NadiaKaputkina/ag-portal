@@ -10,8 +10,8 @@ import {
 import LoginPage from "./login/LoginPage";
 // import RegistrationPage from "./pages/registration/RegistrationPage";
 import CustomerListPage from './customer/CustomerListPage';
-// import OperationListPage from './operation/OperationListPage';
-// import CustomerPage from './customer/item/CustomerPage';
+import OperationListPage from './operation/OperationListPage';
+import CustomerPage from './customer/item/CustomerPage';
 
 export default function App() {
   return (
@@ -21,10 +21,10 @@ export default function App() {
         {/* <Route path="/registration" component={RegistrationPage}/>
         <Route path="/home" component={Home}/> */}
         <Route path="/customer/list" component={CustomerListPage} exact={true}/>
-        {/* <Route path="/customer/:id/item" component={CustomerPage}/>
-        <Route path="/customer/new" component={Home}/>
+        <Route path="/customer/:id/item" component={CustomerPage}/>
+        {/* <Route path="/customer/new" component={Home}/>*/}
         <Route path="/operation/list" component={OperationListPage}/>
-        <Route path="/payment/:id" component={Home}/>
+        {/* <Route path="/payment/:id" component={Home}/>
         <Route path="/payment/new" component={Home}/> */}
         <Route path="/" render={() => <Redirect to="/login"/>} exact={true}/>
       </Switch>

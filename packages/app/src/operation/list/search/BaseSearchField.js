@@ -80,7 +80,6 @@ const BaseSearchField = (props) => {
     };
 
     const handleClick = () => {
-        // console.log('click');
         replaceUrl();
     }
 

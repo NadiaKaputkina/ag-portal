@@ -2,7 +2,7 @@ const db = require('../../db');
 
 const loadList = async (req, res) => {
     const bankAccountList = await db.select().table('bankAccount')
-    res.send(bankAccountList);
+    res.send({ items: bankAccountList, totalCount: 10 });
 }
 
 const loadBankAccount = async (req, res) => {

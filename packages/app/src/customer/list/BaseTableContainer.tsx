@@ -4,6 +4,7 @@ import React from 'react'
 import { useHistory } from 'react-router';
 import { prepareUrl } from '../../helpers/queryHelper';
 import { useStore } from '../../store';
+import { ICustomerEntity } from '../CustomerStore';
 import BaseTablePagination from './BaseTablePagination';
 import CustomerTable from './CustomerTable';
 
@@ -23,8 +24,11 @@ const BaseTableContainer = observer((props: any) => {
     const handleRowClick = (id: number) => (e: any) => {
         history.push(`/customer/${id}/item`)
     }
-    const handleDeleteButton = (id: number, queryParams: any) => (e: any) => {
-        CustomerStore.delete(id, queryParams)
+    const handleIsEnabledButton = (customer: ICustomerEntity, queryParams: any) => (e: any) => {
+        const updatedCustomer: ICustomerEntity = { ...customer, isEnable: customer.isEnable ? 0 : 1} 
+        const message: string = 'Статус успешно обновлен';
+
+        CustomerStore.update(updatedCustomer, queryParams, message)
     }
     const handleOperationButton = (id: number) => (e: any) => {
         history.push(`/operation/list?customerId=${id}`)
@@ -56,7 +60,7 @@ const BaseTableContainer = observer((props: any) => {
                 queryParams={queryParams}
                 store={CustomerStore}
                 handleRowClick={handleRowClick}
-                handleDeleteButton={handleDeleteButton}
+                handleIsEnabledButton={handleIsEnabledButton}
                 handleOperationButton={handleOperationButton}
                 createSortHandler={createSortHandler}
             />

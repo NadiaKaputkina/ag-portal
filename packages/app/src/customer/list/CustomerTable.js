@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import ReceiptIcon from '@material-ui/icons/Receipt';
+import ReplayIcon from '@material-ui/icons/Replay';
 
 import { DEFAULT_STYLES, useDefaultStyles } from "../../shared/styles/rootStyles";
 import TableCellStatus from './TableCellStatus';
@@ -18,13 +19,12 @@ const CustomerTable = observer((props) => {
     const {
         store,
         handleRowClick,
-        handleDeleteButton,
+        handleIsEnabledButton,
         handleOperationButton,
         queryParams,
         createSortHandler,
     } = props;
-        console.log("🚀 ~ file: CustomerTable.js ~ line 26 ~ CustomerTable ~ queryParams", queryParams)
-
+    
     const classes = useDefaultStyles(DEFAULT_STYLES);
 
     return (
@@ -52,11 +52,11 @@ const CustomerTable = observer((props) => {
                         </TableCell>
                         <TableCell align="right">
                             <IconButton
-                                aria-label="delete"
+                                aria-label="actions"
                                 color="primary"
-                                onClick={handleDeleteButton(customer.id, queryParams)}
+                                onClick={handleIsEnabledButton(customer, queryParams)}
                             >
-                                <DeleteIcon />
+                                { customer.isEnable ? <DeleteIcon /> : <ReplayIcon /> }
                             </IconButton>
                         </TableCell>
                     </TableRow>

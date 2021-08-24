@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router";
 import { prepareQueryParams } from "../../../helpers/queryHelper";
-import BaseSearchField from "./BaseSearchField";
+// import BaseSearchField from "./BaseSearchField";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from "@material-ui/core";
@@ -42,11 +42,11 @@ const BaseSearchContainer = (props) => {
                 onChange={handleChangeAutocomplete}
                 renderInput={(params) => <TextField {...params} label="Имя" variant="outlined" />}
             />
-            <BaseSearchField
+            {/* <BaseSearchField
                 queryParams={queryParams}
                 qParam={qParam}
                 setQParam={setQParam}
-            />
+            /> */}
         </div>
     )
 }

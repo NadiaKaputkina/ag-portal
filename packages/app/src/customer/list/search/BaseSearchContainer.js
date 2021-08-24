@@ -38,7 +38,6 @@ const BaseSearchContainer = observer((props) => {
         history.push(newUrl)
     };
     const handleClick = () => {
-        console.log(stateParams)
         replaceUrl()
     }
     return (

@@ -12,23 +12,26 @@ const loadList = async (req, res) => {
     } = req.query;
 
     const sql = db.table('customer')
-    // console.log('QUERY -> ', req.query);
-
+    
     if (q) {
         sql.where('name', 'like', `%${q}%`)
     }
-
-    switch (isEnable) {
-        case 'disabled': 
-            sql.where('isEnable', 0)
-            break
-        case 'enabled':
-            sql.where('isEnable', 1)
-            break
-        default: 
-            break
+    if (customerId) {
+        sql.where('id', customerId)
     }
-    
+
+    if (!customerId) {
+        switch (isEnable) {
+            case 'disabled': 
+                sql.where('isEnable', 0)
+                break
+            case 'enabled':
+                sql.where('isEnable', 1)
+                break
+            default: 
+                break
+        }
+    }
     const sqlTotalCount = sql.clone();
 
     if (limit) {
@@ -49,6 +52,19 @@ const loadList = async (req, res) => {
     res.send({ items: customerList, totalCount: totalCount[0]['count(`id`)'] });
 };
 
+const loadCustomersLastNameList = async (req, res) => {
+    const sql = db.table('customer')
+    // const limit = 20
+
+    // if (limit) {
+    //     sql.limit(limit)
+    // }
+
+    const customerLastNameList = await sql.select('id', 'lastName')
+
+    res.send(customerLastNameList);
+};
+
 const loadCustomer = async (req, res) => {
     const id = req.params.id;
     
@@ -56,6 +72,7 @@ const loadCustomer = async (req, res) => {
         .where({
             id,
         })
+        .first()
 
     res.send(customer);
 }
@@ -95,4 +112,5 @@ module.exports = {
     updateCustomer,
     editCustomer,
     deleteCustomer,
+    loadCustomersLastNameList,
 }
