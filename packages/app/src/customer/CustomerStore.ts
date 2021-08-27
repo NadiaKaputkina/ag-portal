@@ -2,14 +2,8 @@ import { runInAction } from 'mobx';
 import { deleteCustomerApi, loadCustomer, loadCustomerLastNameList, loadCustomerList, updateCustomerApi } from '../api/customer';
 import { makeAutoObservable } from "mobx"
 import SnackBarStore from '../layouts/snackBar/SnackBarStore';
-
-export interface ICustomerEntity {
-  id: number | null;
-  firstName: string;
-  lastName: string;
-  age: number | null;
-  isEnable: number;
-}
+import CustomerEntity, { ICustomerEntity } from './CustomerEntity';
+import { plainToClass } from 'class-transformer';
 
 export interface ICustomerLastNameList {
   id: number | string;
@@ -17,8 +11,8 @@ export interface ICustomerLastNameList {
 }
 
 export class CustomerStore {
-  item: ICustomerEntity;
-  items: ICustomerEntity[];
+  item: CustomerEntity;
+  items: CustomerEntity[];
   totalCount: number;
   lastNameList: ICustomerLastNameList[];
 
@@ -39,18 +33,14 @@ export class CustomerStore {
 
   async loadCustomerList(queryParams: any) {
     try {
-      const response = await loadCustomerList(queryParams)
-      const res = await response.json()
+      const res = await loadCustomerList(queryParams)
 
-      if (response.status === 200) {
-        runInAction(() => {
-          this.items = res.items
-          this.totalCount = res.totalCount
-        })
-        return true
-      }
+      runInAction(() => {
+        this.items = res.items.map((item: any) => plainToClass(CustomerEntity, item));
+        this.totalCount = res.totalCount
+      })
 
-      return false
+      return true
     } catch (e) {
       console.log('e', e)
       return false
@@ -76,7 +66,7 @@ export class CustomerStore {
     try {
       const response = await loadCustomer(id)
       const res = await response.json()
-    
+
       if (response.status === 200) {
         runInAction(() => {
           this.item = res
@@ -90,7 +80,7 @@ export class CustomerStore {
   async delete(id: ICustomerEntity['id'], queryParams: any) {
     try {
       const response = await deleteCustomerApi(id as number)
-    
+
       if (response.status === 200) {
         this.loadCustomerList(queryParams)
       }
@@ -103,7 +93,7 @@ export class CustomerStore {
     try {
       // const response = await api.post(updateCustomerApi(customer))
       const response = await updateCustomerApi(customer)
-    
+
       if (response.status === 200) {
         SnackBarStore.open(message)
         this.loadCustomerList(queryParams)
@@ -113,8 +103,8 @@ export class CustomerStore {
     }
   }
 
-  findById(id: ICustomerEntity['id']) {
-    return this.items.find((item: ICustomerEntity) => item.id === id)
+  findById(id: CustomerEntity['id']) {
+    return this.items.find((item: CustomerEntity) => item.id === id)
   }
 
 }

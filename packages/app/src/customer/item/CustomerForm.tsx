@@ -3,9 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
 import { useFormik } from 'formik';
 import EditableTextInput from "./EditableTextInput";
-import { ICustomerEntity } from "../CustomerStore";
 import { observer } from "mobx-react";
-import { toJS } from "mobx";
+import { ICustomerEntity } from "../CustomerEntity";
 
 const CustomerForm = observer((props: any) => {
     const {

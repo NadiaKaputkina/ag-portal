@@ -9,27 +9,15 @@ export interface IOrderByItem {
     order?: 'asc' | 'desc',
 }
 
-// export type queryParamsType = {
-//     q: string,
-//     page: number,
-//     limit: number,
-//     customerId: number | null,
-//     isEnable: null | '',
-//     orderBy: IOrderByItem[]
-// }
 export interface IQueryParams {
-    [index: string]: any,
-    orderBy: Object[]
+    q: string,
+    page: number,
+    limit: number,
+    customerId: number | null,
+    isEnable: string,
+    orderBy: IOrderByItem[]
 }
 
-// type defaultQueryParamsType = {
-//     q: string,
-//     page: number,
-//     limit: number,
-//     customerId: (number | null),
-//     isEnable: 'enabled' | '',
-//     orderBy: IOrderByItem[]
-// }
 const defaultQueryParams: IQueryParams = {
     q: '',
     page: 1,
@@ -64,7 +52,7 @@ export const prepareUrl = (url: string, queryParams: IQueryParams): string => {
                 const currentParam = queryParams[key]
                 if (JSON.stringify(currentParam) !== JSON.stringify(defaultQueryParams[key]) && currentParam !== null) {
                     if (Array.isArray(currentParam) && currentParam.length) {
-                        newSearchParams.append(key as string, JSON.stringify(currentParam))
+                        newSearchParams.append(key, JSON.stringify(currentParam))
                         return
                     }
                     

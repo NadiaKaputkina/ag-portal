@@ -1,3 +1,8 @@
-export const loadBankAccountList = () => {
-    return fetch('http://localhost:5000/bankAccount/list')
+import { IQueryParams, prepareUrl } from "../helpers/queryHelper"
+const baseApiUrl = 'http://localhost:5000'
+
+export const loadBankAccountList = (queryParams: IQueryParams) => {
+    let url = prepareUrl(`${baseApiUrl}/bankAccount/list`, queryParams)
+
+    return fetch(url)
 }

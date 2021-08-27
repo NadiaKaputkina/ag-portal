@@ -33,8 +33,7 @@ const OperationContainer = observer(() => {
                 <AddBoxIcon />
                 Новый платеж
             </Button> */}
-            <OperationTable queryParams={queryParams} 
-            />
+            <OperationTable />
         </>
     )
 })

@@ -19,7 +19,7 @@ const loadList = async (req, res) => {
     if (customerId) {
         sql.where('id', customerId)
     }
-
+    
     if (!customerId) {
         switch (isEnable) {
             case 'disabled': 

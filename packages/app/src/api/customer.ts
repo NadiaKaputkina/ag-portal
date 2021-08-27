@@ -1,11 +1,12 @@
-import { ICustomerEntity } from "../customer/CustomerStore"
+import api from "."
+import { ICustomerEntity } from "../customer/CustomerEntity"
 import { IQueryParams, prepareUrl } from "../helpers/queryHelper"
 const baseApiUrl = 'http://localhost:5000'
 
 export const loadCustomerList = (queryParams: IQueryParams) => {
     let url = prepareUrl(`${baseApiUrl}/customer/list`, queryParams)
 
-    return fetch(url)
+    return api.GET(url)
 }
 
 export const loadCustomerLastNameList = () => {

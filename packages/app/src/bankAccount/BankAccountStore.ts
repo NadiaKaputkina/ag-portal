@@ -1,13 +1,14 @@
 import { runInAction } from 'mobx';
 import { makeAutoObservable } from "mobx"
 import { loadBankAccountList } from '../api/bankAccount';
+import { IQueryParams } from '../helpers/queryHelper';
 
 export interface IBankAccountEntity {
     /** @todo переделать типы в единый тип, number*/
-    id: number | string;
-    bill: number | string;
-    bankId: number | string;
-    customerId: number | string;
+    id: number;
+    bill: number;
+    bankId: number;
+    customerId: number;
 }
 
 export class BankAccountStore {
@@ -20,9 +21,9 @@ export class BankAccountStore {
         this.totalCount = 0;
     }
     /** @todo передать queryParams */
-    async loadBankAccountList() {
+    async loadBankAccountList(queryParams: IQueryParams) {
         try {
-            const response = await loadBankAccountList()
+            const response = await loadBankAccountList(queryParams)
             const res = await response.json()
 
             if (response.status === 200) {

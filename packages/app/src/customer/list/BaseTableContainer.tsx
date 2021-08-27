@@ -4,7 +4,7 @@ import React from 'react'
 import { useHistory } from 'react-router';
 import { prepareUrl } from '../../helpers/queryHelper';
 import { useStore } from '../../store';
-import { ICustomerEntity } from '../CustomerStore';
+import { ICustomerEntity } from '../CustomerEntity';
 import BaseTablePagination from './BaseTablePagination';
 import CustomerTable from './CustomerTable';
 

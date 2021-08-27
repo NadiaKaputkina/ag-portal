@@ -12,22 +12,10 @@ import { observer } from 'mobx-react';
 import { IBankAccountEntity } from '../bankAccount/BankAccountStore';
 import { IOperationEntity } from './OperationStore';
 import { useStore } from '../store';
+import CustomerFullNameCell from './CustomerFullNameCell';
 
-const OperationTable = observer((props: any) => {
-    const {
-        queryParams,
-    } = props
-
+const OperationTable = observer(() => {
     const { OperationStore, BankAccountStore, CustomerStore } = useStore();
-
-    const getCustomerName = (customerId: any) => {
-        /** @todo неправильная логика */ 
-        const customer = CustomerStore.findById(customerId)
-        
-        const customerFullName = customer ? `${customer.lastName} ${customer.firstName}` : ''
-
-        return <TableCell scope="row">{customerFullName}</TableCell>
-    }
 
     return (
         <TableContainer component={Paper}>
@@ -61,10 +49,12 @@ const OperationTable = observer((props: any) => {
                     {OperationStore.items.map((operation: IOperationEntity) => {
                         const bankAccount = BankAccountStore.items.find((bankAccount: IBankAccountEntity) => bankAccount.id === operation.bankAccountId)
 
+                        const customer = CustomerStore.findById(operation.customerId)
+                        
                         return (
                             <TableRow key={`operation_${operation.id}`}>
                                 <TableCell scope="row">{operation.id}</TableCell>
-                                { getCustomerName(operation.customerId) }
+                                <CustomerFullNameCell customer={customer} />
                                 <TableCell>{bankAccount.bill}</TableCell>
                                 <TableCell>{operation.value}</TableCell>
                             </TableRow>

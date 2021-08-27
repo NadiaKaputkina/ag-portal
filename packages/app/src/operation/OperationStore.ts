@@ -1,15 +1,13 @@
-import { runInAction, toJS } from 'mobx';
-import { loadCustomerList } from '../api/customer';
+import { runInAction } from 'mobx';
 import { makeAutoObservable } from "mobx"
 import { loadOperationListReq } from '../api/operation';
-import CustomerStore, { ICustomerEntity } from '../customer/CustomerStore';
+import CustomerStore from '../customer/CustomerStore';
 import BankAccountStore from '../bankAccount/BankAccountStore';
-import { loadBankAccountList } from '../api/bankAccount';
 
 export interface IOperationEntity {
-    id: number | string;
-    customerId: number | string;
-    bankAccountId: number | string;
+    id: number;
+    customerId: number;
+    bankAccountId: number;
     value: number;
 }
 
@@ -28,7 +26,7 @@ export class OperationStore {
             const response1 = await CustomerStore.loadCustomerList(queryParams) 
             if (!response1) return false
 
-            const response2 = await BankAccountStore.loadBankAccountList()
+            const response2 = await BankAccountStore.loadBankAccountList(queryParams)
             if (!response2) return false
 
             const response3 = await loadOperationListReq(queryParams)
